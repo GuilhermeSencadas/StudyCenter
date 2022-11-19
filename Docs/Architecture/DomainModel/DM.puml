@@ -1,0 +1,33 @@
+@startuml
+
+title "Study Center - Domain Model"
+
+class Test
+
+class Question{
+    number
+    text
+    type
+}
+
+class Subject{
+    code
+    name
+    description
+}
+
+class Category{
+    name
+    description
+}
+
+'Relationships
+
+Subject "1" -- "*" Category: > addresses
+
+Category "1" -- "*" Question: > contains
+
+Test "*" -- "1" Subject: < creates 
+Test "*" -- "1..*" Category: > addresses
+
+@enduml
