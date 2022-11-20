@@ -5,14 +5,14 @@ using Newtonsoft.Json;
 namespace Logistics.Domain.Subjects
 {
     //Esta classe apenas cria o Id destinado à Base de Dados
-    public class SubjectCodeDb : EntityId
+    public class SubjectIdDb  : EntityId
     {
 
         [JsonConstructor]
-        public SubjectCodeDb(Guid value) : base(value)
+        public SubjectIdDb (Guid value) : base(value)
         { }
 
-        public SubjectCodeDb(String value) : base(value)
+        public SubjectIdDb (String value) : base(value)
         { }
         override
            protected Object createFromString(String text)

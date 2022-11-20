@@ -5,13 +5,13 @@ namespace Logistics.Domain.Subjects
 
     public class SubjectCode : ValueObject
     {
-        private const int MAX_LENGHT = 3;
+        private const int MAX_LENGHT = 5;
 
         private string _code;
 
         
-        public string code{get { return _code; } }
-        
+        public string Code{get { return _code; } }
+
         public SubjectCode(string code)
         {
             if (code.Length != MAX_LENGHT)
@@ -33,12 +33,12 @@ namespace Logistics.Domain.Subjects
             }
             var other = (SubjectCode)obj;
 
-            return this.code.Equals(other.code);
+            return this._code.Equals(other.Code);
         }
 
         public override int GetHashCode()
         {
-            return this.code.GetHashCode();
+            return this._code.GetHashCode();
         }
 
         

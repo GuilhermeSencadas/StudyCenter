@@ -6,7 +6,7 @@ using Logistics.Domain.Subjects;
 namespace Logistics.Repository
 {
 
-    public interface ISubjectRepository : IRepository<Subject, SubjectCodeDb>
+    public interface ISubjectRepository : IRepository<Subject, SubjectIdDb >
     {
         public bool ExistsSubject(string Id);
         public Task<Subject> GetBySubjectCode(string Id);

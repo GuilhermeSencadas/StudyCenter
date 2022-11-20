@@ -6,7 +6,7 @@ using Logistics.Repository;
 
 namespace Logistics.Service
 {
-    public class SubjectService
+    public class SubjectService : ISubjectService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ISubjectRepository _repo;
@@ -17,13 +17,15 @@ namespace Logistics.Service
             this._repo = repo;
         }
 
+
+
         public async Task<SubjectDto> createSubject(SubjectDto dto)
         {
             if (this._repo.ExistsSubject(dto.code)){
                 throw new BusinessRuleValidationException("ERROR: A Subject with that code already exists");
             }
 
-            var subject = new Subject(dto.code);
+            var subject = new Subject(dto.code, dto.name, dto.description);
 
             await this._repo.AddAsync(subject);
             await this._unitOfWork.CommitAsync();
@@ -32,10 +34,11 @@ namespace Logistics.Service
         }
 
 
-        public Task<List<Subject>> GetSubjects(SubjectDto dto)
+        public async Task<List<SubjectDto>> GetSubjects()
         {
-            throw new System.NotImplementedException();
-
+           
+            List<Subject> list = await this._repo.GetAllAsync();
+            return SubjectMapper.ToDTO(list);
         }
 
 

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Logistics.Migrations
 {
     [DbContext(typeof(LogisticsDbContext))]
-    [Migration("20221120142011_InitialCreate")]
+    [Migration("20221120163818_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,40 @@ namespace Logistics.Migrations
                             b1.Property<string>("SubjectId")
                                 .HasColumnType("TEXT");
 
-                            b1.Property<string>("code")
+                            b1.Property<string>("Code")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("SubjectId");
+
+                            b1.ToTable("Subjects");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SubjectId");
+                        });
+
+                    b.OwnsOne("Logistics.Domain.Subjects.SubjectDescription", "Description", b1 =>
+                        {
+                            b1.Property<string>("SubjectId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Descripion")
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("SubjectId");
+
+                            b1.ToTable("Subjects");
+
+                            b1.WithOwner()
+                                .HasForeignKey("SubjectId");
+                        });
+
+                    b.OwnsOne("Logistics.Domain.Subjects.SubjectName", "Name", b1 =>
+                        {
+                            b1.Property<string>("SubjectId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Name")
                                 .IsRequired()
                                 .HasColumnType("TEXT");
 
@@ -48,6 +81,10 @@ namespace Logistics.Migrations
                         });
 
                     b.Navigation("Code");
+
+                    b.Navigation("Description");
+
+                    b.Navigation("Name");
                 });
 #pragma warning restore 612, 618
         }

@@ -21,7 +21,7 @@ Therefore, I wanted to try to create a Hub to allow any student/ teacher to crea
 
 This project is to create a better and customizable study environment in a simple and fast way.
 
-To organize this project there will be **Subjects**. A subject will be defined by a unique five-letter code (Eg. LAPR, MATHS), the subject's full name (Laboratory Project, Mathematics) and a description. 
+To organize this project there will be **Subjects**. A subject will be defined by a unique five-letter code (Eg. LAPR, MATHS), the subject's full name (Laboratory Project, Mathematics) with a maximum of 20 chars and a 50-letter description . 
 
 To further sort the topics related to each subject, we'll have **Categories** that will compact the questions. Each category has a name (Eg. Adition, Subtraction, Division) and a description (Eg. See X content). The names must be unique under the subject they're placed into.
 

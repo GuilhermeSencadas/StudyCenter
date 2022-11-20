@@ -73,9 +73,6 @@ namespace Logistics
         public void ConfigureMyServices(IServiceCollection services)
         {
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-
-            //TODO Substituir aqui pelas classes que criarmos
-          
              services.AddTransient<ISubjectRepository,SubjectRepository>();
              services.AddTransient<SubjectService>();
         }

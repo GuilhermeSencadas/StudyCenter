@@ -8,7 +8,6 @@ namespace Logistics.Infrastructure
 {
     public class LogisticsDbContext : DbContext
     {
-        //TODO adicionar estes aqui à DB
         public DbSet<Subject> Subjects { get; set; } = null!;
 
 
@@ -23,22 +22,8 @@ namespace Logistics.Infrastructure
             
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            //TODO Adicionar aqui as classes
-            //modelBuilder.ApplyConfiguration(new SubjectEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new SubjectEntityTypeConfiguration());
             
-            modelBuilder.Entity<Subject>(
-                b =>
-                {
-                    b.HasKey(x => x.Id);
-                    b.OwnsOne(x => x.Code, id =>
-                    {
-                        id.Property(x => x.code).IsRequired();
-                    });
-                }
-            );
-            modelBuilder.Entity<Subject>().ToTable("Subjects");
-
             // modelBuilder.ApplyConfiguration(new ProductEntityTypeConfiguration());
             // modelBuilder.ApplyConfiguration(new FamilyEntityTypeConfiguration());
         }

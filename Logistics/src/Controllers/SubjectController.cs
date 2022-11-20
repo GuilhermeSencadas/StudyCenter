@@ -14,6 +14,7 @@ namespace Logistics.Controllers
     [ApiController]
     public class SubjectsController : ControllerBase
     {
+        //TODO Change to interface
         private readonly SubjectService _service;
 
 
@@ -24,14 +25,14 @@ namespace Logistics.Controllers
 
         //GET: /Logistics/Subjects
         [HttpGet]
-        public Task<List<Subject>> ListarSubjects(SubjectDto dto)
+        public async Task<List<SubjectDto>> GetSubjects()
         {
-            return _service.GetSubjects(dto);
+            return await _service.GetSubjects();
         }
 
         //POST: api/Subject
         [HttpPost]
-        public async Task<ActionResult<SubjectDto>> criarSubject(SubjectDto dto)
+        public async Task<ActionResult<SubjectDto>> createSubject(SubjectDto dto)
         {
             try
             {

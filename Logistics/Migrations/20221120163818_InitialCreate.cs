@@ -13,7 +13,9 @@ namespace Logistics.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Code_code = table.Column<string>(type: "TEXT", nullable: true)
+                    Code_Code = table.Column<string>(type: "TEXT", nullable: true),
+                    Name_Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Description_Descripion = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
