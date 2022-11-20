@@ -1,0 +1,2 @@
+cd Logistics
+dotnet run
