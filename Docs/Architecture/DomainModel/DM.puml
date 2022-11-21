@@ -2,32 +2,49 @@
 
 title "Study Center - Domain Model"
 
-class Test
+package Test{
+    class Test <Root>
 
-class Question{
-    number
-    text
-    type
+    class Answer<VO>
+
+    Test "1" -- "*" Answer
 }
 
-class Subject{
-    code
-    name
-    description
-}
+package Subject{
+    class Subject <Root>
 
-class Category{
-    name
-    description
+    class Code <VO>
+    class SubjectName <VO>
+    class SubjectDescription <VO>
+
+    Subject "1" -- "1" Code
+    Subject "1" -- "1" SubjectName
+    Subject "1" -- "1" SubjectDescription
+
+    class Category <Entity>
+    class CategoryName <VO>
+    class CategoryDescription <VO>
+
+    Category "1" -- "1" CategoryName
+    Category "1" -- "1" CategoryDescription
+
+    class Question <Entoty>
+
+    class Number <VO> 
+    class Type <VO>
+    class Text <VO>
+
+    Question "1" -- "1" Number
+    Question "1" -- "1" Text
+    Question "1" -- "1" Type
 }
 
 'Relationships
 
-Subject "1" -- "*" Category: > addresses
+Subject "1" -r- "*" Category: > addresses
 
-Category "1" -- "*" Question: > contains
+Category "1" -r- "*" Question: > contains
 
-Test "*" -- "1" Subject: < creates 
-Test "*" -- "1..*" Category: > addresses
+Test "*" -- "1" Subject: < creates
 
 @enduml
