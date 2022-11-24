@@ -15,10 +15,10 @@ namespace Logistics.Controllers
     public class SubjectsController : ControllerBase
     {
         //TODO Change to interface
-        private readonly SubjectService _service;
+        private readonly ISubjectService _service;
 
 
-        public SubjectsController(SubjectService service) // IAppService
+        public SubjectsController(ISubjectService service) // IAppService
         {
             _service = service;
         }
@@ -30,7 +30,7 @@ namespace Logistics.Controllers
             return await _service.GetSubjects();
         }
 
-        //POST: api/Subject
+        //POST: Logistics/Subject
         [HttpPost]
         public async Task<ActionResult<SubjectDto>> createSubject(SubjectDto dto)
         {
@@ -45,9 +45,9 @@ namespace Logistics.Controllers
             }
         }
 
-        //PUT: api/Subject/{id}
+        //PUT: Logistics/Subject/{id}
         [HttpPut("{id}")]
-        public async Task<ActionResult<SubjectDto>> editarSubject(string id, SubjectDto dto)
+        public async Task<ActionResult<SubjectDto>> editSubject(string id, SubjectDto dto)
         {
 
             if (id != dto.code)
@@ -71,11 +71,11 @@ namespace Logistics.Controllers
             }
         }
 
-        //PATCH: api/Subject/{id}
+        //PATCH: Logistics/Subject/{id}
         [HttpPatch("{id}")]
-        public async Task<ActionResult<SubjectDto>> editarSubjectParcial(string id, SubjectDto dto)
+        public async Task<ActionResult<SubjectDto>> editSubjectPartial(string id, SubjectDto dto)
         {
-
+            //TODO Research about optional fields
             if (id != dto.code)
             {
                 return BadRequest();

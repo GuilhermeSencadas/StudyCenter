@@ -74,7 +74,7 @@ namespace Logistics
         {
             services.AddTransient<IUnitOfWork, UnitOfWork>();
              services.AddTransient<ISubjectRepository,SubjectRepository>();
-             services.AddTransient<SubjectService>();
+             services.AddTransient<ISubjectService,SubjectService>();
         }
     }
 }
