@@ -25,5 +25,32 @@ namespace Logistics.Domain.Subjects
             this._description = new SubjectDescription(description);
         }
 
+        public void FullUpdate(string name, string description)
+        {
+            this._name = new SubjectName(name);
+            this._description = new SubjectDescription(description);
+        }
+
+        public void PartialUpdate(string name, string description)
+        {
+            try
+            {
+                this._name = new SubjectName(name);
+            }
+            catch (Exception)
+            {
+                //Ignore
+            }
+
+            try
+            {
+                this._description = new SubjectDescription(description);
+            }
+            catch (Exception)
+            {
+                //Ignore
+            }
+        }
+
     }
 }

@@ -12,9 +12,12 @@ namespace Logistics.Domain.Subjects
 
         public SubjectName(string name)
         {
+            if(name == null || name == "")
+                throw new BusinessRuleValidationException("ERROR: Subject name cannot be empty.");
+
             if (name.Length > MAX_LENGHT)
             {
-                throw new BusinessRuleValidationException("ERROR: Subject name is to long.");
+                throw new BusinessRuleValidationException("ERROR: Subject name cannot be longer than ' " + MAX_LENGHT+ " ' chars.");
             }
             this._name = name;
         }

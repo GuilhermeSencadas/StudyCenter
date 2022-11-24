@@ -11,6 +11,9 @@ namespace Logistics.Domain.Subjects{
         public string Descripion{get { return _description; }}
 
         public SubjectDescription(string descripion){
+            if(descripion == null)
+                throw new BusinessRuleValidationException("ERROR: Description cannot be null.");
+
             if(descripion.Length > MAX_LENGHT)
                 throw new BusinessRuleValidationException("ERROR: Description is too long.");
 

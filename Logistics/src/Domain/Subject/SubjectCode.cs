@@ -14,11 +14,15 @@ namespace Logistics.Domain.Subjects
 
         public SubjectCode(string code)
         {
+            if(code == null){
+                throw new BusinessRuleValidationException("ERROR: Subject Code cannot be null.");
+            }
+
             if (code.Length != MAX_LENGHT)
             {
-                throw new BusinessRuleValidationException("ERRO: O Identificador do Armazém precisa de ter ' "
+                throw new BusinessRuleValidationException("ERROR: Subjects Code is a ' "
                                                             + MAX_LENGHT +
-                                                            " ' caracteres alfanuméricos.");
+                                                            " ' letter code.");
             }
             this._code = code;
         }

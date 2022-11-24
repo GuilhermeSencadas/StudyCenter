@@ -42,14 +42,19 @@ namespace Logistics.Service
         }
 
 
-        public async Task<SubjectDto> EditSubject(SubjectDto creatingSubjectDto)
+        public async Task<SubjectDto> EditSubject(SubjectDto subjectDto)
         {
-            throw new System.NotImplementedException();
+            //TODO test when subject doesn't exist
+            Subject subject = await this._repo.GetBySubjectCode(subjectDto.code);
+            subject.FullUpdate(subjectDto.name, subjectDto.description);
+            return SubjectMapper.ToDTO(subject);
         }
 
-        public async Task<SubjectDto> EditSubjectPartial(SubjectDto creatingSubjectDto)
+        public async Task<SubjectDto> EditSubjectPartial(SubjectDto subjectDto)
         {
-            throw new System.NotImplementedException();
+            Subject subject = await this._repo.GetBySubjectCode(subjectDto.code);
+            subject.PartialUpdate(subjectDto.name, subjectDto.description);
+            return SubjectMapper.ToDTO(subject);
         }
 
     }

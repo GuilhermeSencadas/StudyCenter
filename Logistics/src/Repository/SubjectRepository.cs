@@ -19,15 +19,15 @@ namespace Logistics.Repository
             this._context = context;
         }
 
-        public async Task<Subject> GetBySubjectCode(string Id)
+        public async Task<Subject> GetBySubjectCode(string code)
         {
             return await this._context.Subjects
-            .Where(x => Id.Equals(x.Code.Code)).FirstOrDefaultAsync();
+            .Where(x => code.Equals(x.Code.Code)).FirstOrDefaultAsync();
         }
 
-        public bool ExistsSubject(string Id)
+        public bool ExistsSubject(string code)
         {
-            Subject Subject = GetBySubjectCode(Id).Result;
+            Subject Subject = GetBySubjectCode(code).Result;
             return !(Subject == null);
         }
 
